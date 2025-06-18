@@ -131,10 +131,10 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <p className="text-gray-400 text-center md:text-left">
-            © 2024 AI PDF Note Taker. All rights reserved.
+            © {new Date().getFullYear()} AI PDF Note Taker. All rights reserved.
           </p>
           <p className="text-gray-400 text-center md:text-right mt-4 md:mt-0">
-            Made with ❤️ for students and professionals
+            Made with ❤️ by ManojKumar for students and professionals
           </p>
         </motion.div>
       </div>
