@@ -64,3 +64,21 @@ export const GetUserFiles =query({
         return result;
     }
 })
+
+export const deleteFile = mutation({
+  args: { fileId: v.string(), storageId: v.string() },
+  handler: async (ctx, args) => {
+    // Delete from storage
+    await ctx.storage.delete(args.storageId);
+    // Delete from database
+    const files = await ctx.db
+      .query('pdfFiles')
+      .filter((q) => q.eq(q.field('fileId'), args.fileId))
+      .collect();
+    if (files.length > 0) {
+      await ctx.db.delete(files[0]._id);
+      return { success: true };
+    }
+    return { success: false, error: 'File not found' };
+  },
+});

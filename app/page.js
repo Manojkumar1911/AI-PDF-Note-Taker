@@ -1,34 +1,20 @@
-"use client"
-import { Button } from "@/components/ui/button";
-import { api } from "@/convex/_generated/api";
-import { UserButton, useUser } from "@clerk/nextjs";
-import { useMutation } from "convex/react";
-import { useEffect } from "react";
+'use client';
+
+// import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import FeaturesSection from '@/components/FeaturesSection';
+import Footer from '@/components/Footer';
 
 export default function Home() {
-
-  const {user}=useUser();
-
-  const createUser =useMutation(api.user.createUser);
-
-  useEffect(()=>{
-     user&&checkUser();
-  },[user])
-  const checkUser=async() =>{
-    const result =await createUser({
-      email:user?.primaryEmailAddress.emailAddress,
-      imageUrl:user?.imageUrl,
-      userName:user?.fullName
-    });
-    console.log(result);
-  }
-
   return (
-    <div>
-      <h2>hello manojkumar</h2>
-      <Button>Subscribe</Button>
-      <UserButton></UserButton>
+    <div className="min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <FeaturesSection />
+      <Footer />
+      <Sonner />
     </div>
-
   );
 }

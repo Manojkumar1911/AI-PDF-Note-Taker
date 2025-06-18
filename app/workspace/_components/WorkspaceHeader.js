@@ -10,7 +10,7 @@ function WorkspaceHeader({fileName}) {
         <h2 className='font-bold'>{fileName}</h2>
         <div className='flex gap-2 items-center'>
           <Button>Save</Button> 
-            <UserButton/>
+            <UserButton afterSignOutUrl="/" />
         </div>
     </div>
   )
